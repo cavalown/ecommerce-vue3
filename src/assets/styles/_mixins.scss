@@ -1,0 +1,17 @@
+$breakpoints: (
+  "mobile": 600px,
+  "pad": 960px,
+  "desktop": 1200px,
+);
+
+@function breakpoint($key) {
+  @return map-get($breakpoints, $key);
+}
+
+@mixin respond-to($key) {
+  @if map-has-key($breakpoints, $key) {
+    @media (min-width: breakpoint($key)) {
+      @content;
+    }
+  }
+}
